@@ -5,7 +5,10 @@
 Python3 уже должен быть установлен.
 Затем используйте pip для установки зависимостей
 
+`python3 -m poetry install`
+или
 `pip install -r requirements.txt`
+
 
 Рекомендуется использовать venv для изоляции проекта
 
