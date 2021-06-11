@@ -1,9 +1,13 @@
 import os
 import requests
 from urllib.parse import urlparse
-
+from argparse import ArgumentParser
 
 TOKEN = os.environ['BT_TOKEN']
+
+def create_parser():
+    parser = ArgumentParser(description='Сокращение ссылкок и вывод статистики кликов')
+    parser.add_argument('url', help='ссылка для анализа')
 
 
 def shorten_url(token, url):
@@ -51,6 +55,8 @@ def check_bitlink(token, url):
 
 
 def main():
+
+    
     url = input('Введите ссылку: ')
     check_link = check_bitlink(TOKEN, url)
     try:
