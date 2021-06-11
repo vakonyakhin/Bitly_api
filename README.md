@@ -22,7 +22,7 @@ Python3 уже должен быть установлен.
 `python main.py ya.ru`
 
 Для получения статистики 
-``python main.py bit.ly/3wCjHBK`
+`python main.py bit.ly/3wCjHBK`
 
 ## Описание аргументов:
  - url - Название ссылки для сокращения или bitlink для получения статистики кликов.
