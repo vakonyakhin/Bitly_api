@@ -1,9 +1,14 @@
 import os
-import requests
-from urllib.parse import urlparse
 from argparse import ArgumentParser
+from urllib.parse import urlparse
 
+import requests
+from dotenv import load_dotenv
+
+
+load_dotenv()
 TOKEN = os.environ['BT_TOKEN']
+
 
 def create_parser():
     parser = ArgumentParser(description='Сокращение ссылкок и вывод статистики кликов')
@@ -12,8 +17,8 @@ def create_parser():
 
 def shorten_url(token, url):
     headers = {
-       'Authorization': f'Bearer {token}',
-        }
+        'Authorization': f'Bearer {token}',
+    }
     payload = {'long_url': url}
     base_url = 'https://api-ssl.bitly.com/v4/bitlinks/'
 
@@ -25,11 +30,11 @@ def shorten_url(token, url):
 def count_clicks(token, url):
     headers = {
         'Authorization': f'Bearer {token}',
-        }
+    }
     params = {
-       'unit': 'month',
-       'units': '-1',
-       }
+        'unit': 'month',
+        'units': '-1',
+    }
 
     url_domain = urlparse(url).netloc
     url_path = urlparse(url).path
@@ -38,13 +43,13 @@ def count_clicks(token, url):
 
     response = requests.get(url, headers=headers, params=params)
     response.raise_for_status()
-    return response.json()['total_clicks']  
+    return response.json()['total_clicks']
 
 
 def check_bitlink(token, url):
     headers = {
-       'Authorization': f'Bearer {token}',
-        }
+        'Authorization': f'Bearer {token}',
+    }
     url_domain = urlparse(url).netloc
     url_path = urlparse(url).path
     base_url = 'https://api-ssl.bitly.com/v4/bitlinks/'
@@ -55,8 +60,6 @@ def check_bitlink(token, url):
 
 
 def main():
-
-    
     url = input('Введите ссылку: ')
     check_link = check_bitlink(TOKEN, url)
     try:
@@ -68,9 +71,8 @@ def main():
                 url = f'http://{url}'
             print('Сокращенная ссылка:', shorten_url(TOKEN, url))
     except requests.exceptions.HTTPError:
-        print('Cсылка введена некорректно')       
+        print('Cсылка введена некорректно')
 
 
 if __name__ == '__main__':
-
     main()
