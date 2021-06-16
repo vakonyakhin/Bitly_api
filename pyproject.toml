@@ -1,12 +1,9 @@
 [tool.poetry]
-name = "bitlyapi"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
-bitly-api-py3 = "^0.3"
+requests = "^2.25.1^
 python-dotenv = "^0.17.1"
 
 [tool.poetry.dev-dependencies]
