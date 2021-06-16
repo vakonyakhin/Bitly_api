@@ -14,6 +14,8 @@ def create_parser():
     parser = ArgumentParser(description='Сокращение ссылкок и вывод статистики кликов')
     parser.add_argument('url', help='ссылка для анализа')
 
+    args = parser.parse_args()
+    return args
 
 def shorten_url(token, url):
     headers = {
@@ -60,15 +62,15 @@ def check_bitlink(token, url):
 
 
 def main():
-    url = input('Введите ссылку: ')
-    check_link = check_bitlink(TOKEN, url)
+    url = create_parser()
+    check_link = check_bitlink(TOKEN, url.url)
     try:
         if check_link:
-            print('Количество кликов по ссылке: ', count_clicks(TOKEN, url))
+            print('Количество кликов по ссылке: ', count_clicks(TOKEN, url.url))
         else:
-            scheme = urlparse(url).scheme
+            scheme = urlparse(url.url).scheme
             if not scheme:
-                url = f'http://{url}'
+                url = f'http://{url.url}'
             print('Сокращенная ссылка:', shorten_url(TOKEN, url))
     except requests.exceptions.HTTPError:
         print('Cсылка введена некорректно')
