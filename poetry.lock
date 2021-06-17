@@ -1,10 +1,10 @@
 [[package]]
 category = "main"
-description = "An API for bit.ly forked for Python 3 support"
-name = "bitly-api-py3"
+description = "Requests for Human"
+name = "requests"
 optional = false
 python-versions = "*"
-version = "0.3"
+version = "2.25.0"
 
 [[package]]
 category = "main"
@@ -22,10 +22,7 @@ content-hash = "f601f0966b9ead58778d82f18fee4bde269b8efbed7abadb8c8e295a54b163bc
 python-versions = "^3.8"
 
 [metadata.files]
-bitly-api-py3 = [
-    {file = "bitly_api_py3-0.3-py3-none-any.whl", hash = "sha256:8de147966d2d3980c6437c49804f5ad25d24ef784f1b3d187055c001fef7d53e"},
-    {file = "bitly_api_py3-0.3.tar.gz", hash = "sha256:5274c1e20b7c87cbae43b438114448a2af41a9815e561ea40813f3892c10f9ea"},
-]
+
 python-dotenv = [
     {file = "python-dotenv-0.17.1.tar.gz", hash = "sha256:b1ae5e9643d5ed987fc57cc2583021e38db531946518130777734f9589b3141f"},
     {file = "python_dotenv-0.17.1-py2.py3-none-any.whl", hash = "sha256:00aa34e92d992e9f8383730816359647f358f4a3be1ba45e5a5cefd27ee91544"},
