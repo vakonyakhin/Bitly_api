@@ -6,15 +6,13 @@ import requests
 from dotenv import load_dotenv
 
 
-
-
-
 def create_parser():
     parser = ArgumentParser(description='Сокращение ссылкок и вывод статистики кликов')
     parser.add_argument('url', help='ссылка для анализа')
 
     args = parser.parse_args()
     return args
+
 
 def shorten_url(token, url):
     headers = {
