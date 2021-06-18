@@ -6,8 +6,7 @@ import requests
 from dotenv import load_dotenv
 
 
-load_dotenv()
-TOKEN = os.environ['BT_TOKEN']
+
 
 
 def create_parser():
@@ -62,6 +61,9 @@ def check_bitlink(token, url):
 
 
 def main():
+    load_dotenv()
+    
+    TOKEN = os.environ['BT_TOKEN']
     url = create_parser()
     check_link = check_bitlink(TOKEN, url.url)
     try:
