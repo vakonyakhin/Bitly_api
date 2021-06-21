@@ -62,15 +62,15 @@ def main():
     load_dotenv()
     
     TOKEN = os.environ['BT_TOKEN']
-    url = create_parser()
-    check_link = check_bitlink(TOKEN, url.url)
+    args = create_parser()
+    check_link = check_bitlink(TOKEN, args.url)
     try:
         if check_link:
-            print('Количество кликов по ссылке: ', count_clicks(TOKEN, url.url))
+            print('Количество кликов по ссылке: ', count_clicks(TOKEN, args.url))
         else:
-            scheme = urlparse(url.url).scheme
+            scheme = urlparse(args.url).scheme
             if not scheme:
-                url = f'http://{url.url}'
+                url = f'http://{args.url}'
             print('Сокращенная ссылка:', shorten_url(TOKEN, url))
     except requests.exceptions.HTTPError:
         print('Cсылка введена некорректно')
